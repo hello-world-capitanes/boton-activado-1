@@ -8,12 +8,26 @@ import './Switch.css';
 
 const Switch = () => {
   const [state, setState] = useState(false);
+  const [active, setActive] = useState ("Activado");
+  const [deactive, setDeactive] = useState ("Desactivado");
 
   const toggleState = () => setState(!state);
 
   return (
     <div className={`switch ${state ? 'on' : 'off'}`}>
-      <p>{state ? 'On' : 'Off'}</p>
+      <label> 
+        <p>Texto activado </p>  
+        <input type= "text" name="Texto activado" value={active} onChange={event => {
+          setActive (event.target.value);
+        }} />
+      </label>
+      <label>
+      <p>Texto desactivado </p>  
+        <input type= "text" name="Texto desactivado" value={deactive} onChange={event => {
+          setDeactive (event.target.value);
+        }} />
+    </label>
+      <p>{state ? active : deactive}</p>
       <button onClick={() => toggleState()}>Change state</button>
     </div>
   );
